@@ -22,5 +22,6 @@ module.exports = {
     //그런데 해당 모듈에 대한 설명이 전혀 없는데 이걸 어떻게 싱크를 맞추고 가져다
     // 쓴다는 건지가 이해가 잘 안됨. 
     GlobalStat: require('./global-stat.model')(sequelize),
+    KeyValue : require('./key-value.model')(sequelize),
 };
 
