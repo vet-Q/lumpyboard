@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {sequelize} = require('./database');
 const globalStatController = require('./controller/global-stats.controller');
-const keyValueController = require('/controller/key-value.controller'); 
+const keyValueController = require('./controller/key-value.controller');
 
 
 async function launchServer(){
@@ -19,9 +19,7 @@ async function launchServer(){
     //  global-stat에 대한 값과, key-value에 대한 값에 대해 
     // API룰 설정하기 위해, 모델을 구성하고, 컨트롤러를 붙이고
     // index.js에서 해당 컨트롤러를 가져와, 콜백함수에 넣어주어서
-    // 이벤트 발생한 경우에 eventlistner가 작동하는 형태로 구현. 
-
-
+    // 이벤트 발생한 경우에 eventlistner가 작동하는 형태로 구현.
 
     app.get('/global-stats',globalStatController.getAll);
     app.post('/global-stats',globalStatController.insertOrUpdate);
@@ -48,5 +46,5 @@ async function launchServer(){
     });
 };
 
-launchServer();``
+launchServer();
 // 처음 API서버를 띄웠던 코드에서, 서버를 초기화하고 시작하는 코드를 launchServer()라는 비동기 함수로 감싸고, 내부에 sequelize.sync()를 실행하는 코드를 추가하였음.

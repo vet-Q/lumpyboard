@@ -53,7 +53,7 @@ module.exports = (sequelize) =>{
         // 3) table index, timestamp configuration.
         {
             sequelize, //set the sequelize instance
-            tablename: "Globalstat",
+            tableName: "Globalstat",
             indexes :[
                 {
                     name:'PRIMARY',

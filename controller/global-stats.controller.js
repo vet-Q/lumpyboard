@@ -57,7 +57,7 @@ async function remove(req, res) {
 }
 
 // errorhandler로 래핑하면 컨트롤러의 각 함수들이 앞서 만들어 둔 errorHandler로 한번 감싸져서 외부로 전달되게 됨. 
-module.exports = wrapWithErrorHandler({
+module.exports = wrapWithErrorHandler ({
     getAll,
     insertOrUpdate,
     remove,
