@@ -10,6 +10,7 @@ function compareNumbers(a, b) {
 
 const TotalPath = path.join(process.cwd(), 'Total.json');
 
+const Client = new APIClient();
 
 async function Crawler() {
     try {
@@ -48,10 +49,12 @@ async function Crawler() {
         }
         fs.writeFileSync(TotalPath, JSON.stringify(results));
         console.log(results);
-        return results;
+        return results
+
     } catch (error) {
         console.error("Error in Crawler:", error);
     }
 }
 
-Crawler();
+
+module.exports = Crawler;
