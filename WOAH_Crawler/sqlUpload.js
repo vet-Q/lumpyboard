@@ -12,7 +12,7 @@ function readFile (filePath) {
     }
 }
 
-//index.js 로 빼서 재정의 할 부분
+//mainCrawler.js 로 빼서 재정의 할 부분
 const sequelize = new Sequelize('lumpyboard', 'user', '1234qwer@', {
     host: '127.0.0.1',
     dialect: 'mysql',

@@ -10,7 +10,6 @@ function compareNumbers(a, b) {
 
 const TotalPath = path.join(process.cwd(), 'Total.json');
 
-const Client = new APIClient();
 
 async function Crawler() {
     try {
@@ -23,16 +22,25 @@ async function Crawler() {
 
         for (let i of NumberStat) {
             let url = `https://wahis.woah.org/api/v1/pi/review/report/${i.reportId}/all-information?language=en`;
+            // let url = `https://wahis.woah.org/api/v1/pi/review/report/163510/all-information?language=en`;
+
             const data = new SubCrawler(url);
             const { eventField, reportNumber } = await data.crawlstats();
             let eventInfo = {};
 
             reportNumber.sort(compareNumbers);
-            for (let el of reportNumber) {
-                let { dates, resultArray, measure } = await eventCrawler(i.reportId, el);
 
-                if (!resultArray.length) continue;
-                eventInfo[el] = { dates, resultArray, measure };
+            for (let el of reportNumber) {
+                try {
+                    let {dates, resultArray, measure} = await eventCrawler(i.reportId, el);
+
+                    // test code
+                    // let {dates, resultArray, measure} = await eventCrawler(163803, el);
+
+                    if (!resultArray.length) continue;
+                    eventInfo[el] = {dates, resultArray, measure};
+
+                } catch(e) { console.log(`there is a problem to collect data on specific page:${e}`)}
             }
 
             const TotalData = {
@@ -56,5 +64,7 @@ async function Crawler() {
     }
 }
 
+Crawler()
 
 module.exports = Crawler;
+
